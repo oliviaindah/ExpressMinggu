@@ -4,27 +4,21 @@ const express = require ("express")
 //import router library from express
 const router = express.Router()
 
-//fungsi Hello World
-const helloworld = (request,  respond)=>
-respond.send("Hello World")
-
-//fungsi user get 
-const userFunction = (req, res)=> {
-    const{name, address } = req.params
-
-    res
-    .status(200)
-    .json({
-        name,
-        address,
-    })
-}
+//import controller to route
+const userCtrl = require("../app/controller/user.controller")
 
 //get root request
 router 
-    .get("/",helloworld)
+    .route("/")
+    .get(userCtrl.helloworld)
 
 router
-    .get("/:name/address", userFunction)
+    .route("/:name/:address")
+    .get(userCtrl.userFunction)
+
+router
+    .route("/employee")
+    .get(userCtrl.getEmployee)
+    .post(userCtrl.addOneEmployee)
 
 module.exports = router
