@@ -1,5 +1,5 @@
 //call the library
-const mongos = require ("mongos")
+const mongoose = require ("mongoose")
 
 //kaljay database
 const DB_URL = "mongodb://localhost:27017/kaljay_epos"
@@ -9,8 +9,8 @@ mongoose.connect(DB_URL)
 
 //Event handling for connection
 //if successed or connected
-mongoose.connection.on ("connected"), () =>
-    console.log(`mongoose.connected to ${DB_URL})`)
+mongoose.connection.on ("connected", () =>
+    console.log(`mongoose.connected to ${DB_URL}`))
 
 // if error
 mongoose.connection.on("error", (err) =>
